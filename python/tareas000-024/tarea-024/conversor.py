@@ -8,6 +8,7 @@ print(f"6. Centímetros.")
 print(f"7. Milímetros.")
 unidad = int(input("¿A qué unidad quieres convertir?: "))
 
+#Match (switch) para calcular el cambio de metros a otra unidad.
 match unidad:
     case 1:
         print(f"{metros} metros son {metros * 0.001} kilómetros.")
