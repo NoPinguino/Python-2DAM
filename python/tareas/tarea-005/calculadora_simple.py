@@ -1,0 +1,7 @@
+num1 = int(input("Introduce un número [1/2]: "))
+num2 = int(input("Introduce un número [2/2]: "))
+print(f"La suma de los números es: {num1+num2}")
+print(f"La resta de los números es: {num1-num2}")
+print(f"El producto de los números es: {num1*num2}")
+print("La división de los números es: " , (num1/num2))
+print("La división auclidea de los números es: " , (num1//num2))
