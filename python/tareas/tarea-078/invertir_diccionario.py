@@ -51,7 +51,7 @@ diccionario = {
     "Venezuela": "Caracas"
 }
 invertido = {}
-for i, (pais, capital) in enumerate(diccionario.items()):
+for pais, capital in diccionario.items():
     invertido[capital] = pais #Lo guardamos en otro diccionario con el orden invertido
 for k, v in invertido.items():
     print(f"{k}: {v}") #Imprimimos el nuevo diccionario
