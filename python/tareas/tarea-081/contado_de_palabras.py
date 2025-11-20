@@ -1,4 +1,4 @@
-frutas = "pera pera manzana cereza manzana pera plátano"
+frutas = "pera pera manzana cereza manzana pera plátano".lower()
 contador = {}
 for fruta in frutas.split(" "):
     if fruta not in contador:
