@@ -9,7 +9,6 @@ maximo = ["",0]
 for k in puntos.keys():
     distancia = sum(puntos.get(k))
     if distancia > maximo[1]:
-        maximo[0] = k
-        maximo[1] = distancia
+        maximo[0], maximo[1] = k, distancia
 
 print(maximo)
