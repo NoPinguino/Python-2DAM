@@ -4,7 +4,5 @@ diccionario = {
     "Historia": [6,9,6,5,7]
 }
 for v in diccionario.keys():
-    prom = 0
-    for i in diccionario.get(v, []):
-        prom = prom + i
-    print(f"{v}: {prom/len(diccionario.get(v, []))}")
+    prom = sum(diccionario[v])/len(diccionario[v])
+    print(f"{v}: {prom}")
