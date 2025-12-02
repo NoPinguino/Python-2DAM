@@ -9,6 +9,7 @@ paises = {
     "Bangladés": ["Daca", "Chittagong", "Khulna"],
     "Rusia": ["Moscú", "San Petersburgo", "Novosibirsk"],
     "México": ["Ciudad de México", "Guadalajara", "Monterrey"],
+    "España": ["Madrid", "Barcelona", "Valencia"],
 }
 
 opcion = input("¿Va a introducir un pais o ciudad?: ")
