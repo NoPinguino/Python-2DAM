@@ -22,7 +22,6 @@ diccionario_palabras = {
     "scarlett_johansson": ("Scarlett Johansson", "Celebridades"),
     "will_smith": ("Will Smith", "Celebridades"),
     "ariana_grande": ("Ariana Grande", "Celebridades"),
-
     # ============ LUGARES ============
     "paris": ("París", "Lugares"),
     "madrid": ("Madrid", "Lugares"),
@@ -42,7 +41,6 @@ diccionario_palabras = {
     "venecia": ("Venecia", "Lugares"),
     "cairo": ("El Cairo", "Lugares"),
     "praga": ("Praga", "Lugares"),
-
     # ============ INFORMATICA / PROGRAMACION ============
     "python": ("Python", "Informatica/Programacion"),
     "java": ("Java", "Informatica/Programacion"),
@@ -64,7 +62,6 @@ diccionario_palabras = {
     "debugging": ("Debugging", "Informatica/Programacion"),
     "compilador": ("Compilador", "Informatica/Programacion"),
     "arrays": ("Arrays", "Informatica/Programacion"),
-
     # ============ OBJETOS COTIDIANOS ============
     "telefono": ("Teléfono", "Objetos cotidianos"),
     "mochila": ("Mochila", "Objetos cotidianos"),
@@ -84,7 +81,6 @@ diccionario_palabras = {
     "lampara": ("Lámpara", "Objetos cotidianos"),
     "espejo": ("Espejo", "Objetos cotidianos"),
     "almohada": ("Almohada", "Objetos cotidianos"),
-
     # ============ PELICULAS / SERIES ============
     "matrix": ("Matrix", "Peliculas/Series"),
     "breaking_bad": ("Breaking Bad", "Peliculas/Series"),
@@ -104,7 +100,6 @@ diccionario_palabras = {
     "the_walking_dead": ("The Walking Dead", "Peliculas/Series"),
     "pulp_fiction": ("Pulp Fiction", "Peliculas/Series"),
     "black_mirror": ("Black Mirror", "Peliculas/Series"),
-
     # ============ COMIDAS / BEBIDAS ============
     "pizza": ("Pizza", "Comidas/Bebidas"),
     "hamburguesa": ("Hamburguesa", "Comidas/Bebidas"),
@@ -124,7 +119,6 @@ diccionario_palabras = {
     "ensalada": ("Ensalada", "Comidas/Bebidas"),
     "pollo": ("Pollo", "Comidas/Bebidas"),
     "arroz": ("Arroz", "Comidas/Bebidas"),
-
     # ============ ANIMALES ============
     "perro": ("Perro", "Animales"),
     "gato": ("Gato", "Animales"),
@@ -144,7 +138,6 @@ diccionario_palabras = {
     "tortuga": ("Tortuga", "Animales"),
     "ballena": ("Ballena", "Animales"),
     "mono": ("Mono", "Animales"),
-
     # ============ DEPORTES ============
     "futbol": ("Fútbol", "Deportes"),
     "baloncesto": ("Baloncesto", "Deportes"),
@@ -164,7 +157,6 @@ diccionario_palabras = {
     "gimnasia": ("Gimnasia", "Deportes"),
     "esgrima": ("Esgrima", "Deportes"),
     "karate": ("Kárate", "Deportes"),
-
     # ============ PROFESIONES ============
     "medico": ("Médico", "Profesiones"),
     "profesor": ("Profesor", "Profesiones"),
@@ -184,7 +176,6 @@ diccionario_palabras = {
     "veterinario": ("Veterinario", "Profesiones"),
     "actor": ("Actor", "Profesiones"),
     "musico": ("Músico", "Profesiones"),
-
     # ============ MARCAS ============
     "apple": ("Apple", "Marcas"),
     "nike": ("Nike", "Marcas"),
@@ -204,7 +195,6 @@ diccionario_palabras = {
     "zara": ("Zara", "Marcas"),
     "ikea": ("IKEA", "Marcas"),
     "lego": ("LEGO", "Marcas"),
-
     # ============ PAISES ============
     "espana": ("España", "Países"),
     "francia": ("Francia", "Países"),
@@ -233,8 +223,8 @@ def limpiar_consola():
 
 
 def selec_nombre_jugadores(num_jugadores):
-    jugadores.clear() # Elimino los jugadores registrados anteriormente
-    nombres_usados = set() # Más eficiente que las listas
+    jugadores.clear()  # Elimino los jugadores registrados anteriormente
+    nombres_usados = set()  # Más eficiente que las listas
 
     for i in range(num_jugadores):
         while True:
@@ -250,12 +240,7 @@ def selec_nombre_jugadores(num_jugadores):
             else:
                 break
         # Creo a un jugador con el nombre introducido y datos por defecto
-        jugador = {
-            "nombre": nuevo_nombre,
-            "rol": "civil",
-            "vivo": True,
-            "puntos": 0
-        }
+        jugador = {"nombre": nuevo_nombre, "rol": "civil", "vivo": True, "puntos": 0}
         # Añado el jugador a la lista de jugadores y el nombre a la lista de nombres usados
         nombres_usados.add(nuevo_nombre)
         jugadores.append(jugador)
@@ -264,6 +249,7 @@ def selec_nombre_jugadores(num_jugadores):
 def imprimir_marcador():
     for jugador in jugadores:
         print(f"{jugador['nombre']} => {jugador['puntos']}")
+    input("Presiona ENTER para continuar y volver al menú principal.")
 
 
 def selec_num_jugadores():
@@ -298,10 +284,12 @@ def selec_max_rondas(num_impostores):
     try:
         nuevo = int(input("Introduce el número de rondas: "))
     except ValueError:
-        print(f"⚠️ - ERROR: Debes introducir un valor numérico.")
+        print("⚠️ - ERROR: Debes introducir un valor numérico.")
         return num_impostores
     if nuevo < num_impostores:
-        print("⚠️ - ERROR: Mínimo se debe poder jugar tantas rondas como impostores haya.")
+        print(
+            "⚠️ - ERROR: Mínimo se debe poder jugar tantas rondas como impostores haya."
+        )
         return num_impostores
     return nuevo
 
@@ -374,69 +362,75 @@ def imprimir_respuestas(respuestas, ronda):
         print(f"- {respuesta} ha dicho {respuestas[ronda - 1][respuesta]}")
 
 
+def conseguir_jugadores_vivos():
+    vivos = []
+    for jugador in jugadores:
+        if jugador["vivo"]:
+            vivos.append(jugador)
+    return vivos
+
+
 def votaciones():
-    # Creo la estructura de votos con los jugadores
+    # Inicializar votos solo para jugadores vivos
     votos = {}
-    # La estructura será un diccionario con Nombre jugador -> Votos a ese jugador
-    for jugador in jugadores:
-        if jugador["vivo"]:
-            votos[jugador["nombre"]] = 0
-    # Voy jugador por jugador pidiendo que vote
-    for jugador in jugadores:
-        if jugador["vivo"]:
-            while True:
-                print("")
-                print(f"Turno de votar de {jugador['nombre']}.")
-                print("Lista de jugadores: ")
-                # Creo lista de jugadores vivos
-                jug_vivos = []
-                for jug in jugadores:
-                    if jug["vivo"]:
-                        jug_vivos.append(jug)
-                # Muestro jugadores vivos
-                for i, jug_vivo in enumerate(jug_vivos):
-                    print(f"{i + 1} - {jug_vivo['nombre']}")
+    for jugador in conseguir_jugadores_vivos():
+        votos[jugador["nombre"]] = 0
 
-                try:
-                    eleccion_voto = int(input("Introduce el voto: ")) - 1
-                    # Comprobar rango
-                    if eleccion_voto < 0 or eleccion_voto >= len(jug_vivos):
-                        print("⚠️ - ERROR: No existe ese jugador, vota de nuevo.")
-                        continue
-                    # Comprobar que no se vote a sí mismo
-                    if jug_vivos[eleccion_voto]["nombre"] == jugador["nombre"]:
-                        print("⚠️ - ERROR: No te puedes votar a ti mismo, vota de nuevo.")
-                        continue
-                    # Voto válido
-                    votos[jug_vivos[eleccion_voto]["nombre"]] += 1
-                    break
+    # Cada jugador vivo vota
+    for jugador in conseguir_jugadores_vivos():
+        while True:
+            print("")
+            print(f"Turno de votar de {jugador['nombre']}.")
+            # Imprimo los jugadores vivos:
+            print("Lista de jugadores:")
+            jug_vivos = conseguir_jugadores_vivos()
+            for i, jug_vivo in enumerate(jug_vivos):
+                print(f"{i + 1} - {jug_vivo['nombre']}")
+            # Pido al usuario que introduzca su voto, control de errores.
+            try:
+                eleccion_voto = int(input("Introduce el voto: ")) - 1
+                # Comprobar rango
+                if eleccion_voto < 0 or eleccion_voto >= len(jug_vivos):
+                    print("⚠️ - ERROR: No existe ese jugador, vota de nuevo.")
+                    continue
+                # Comprobar que no se vote a sí mismo
+                if jug_vivos[eleccion_voto]["nombre"] == jugador["nombre"]:
+                    print("⚠️ - ERROR: No te puedes votar a ti mismo, vota de nuevo.")
+                    continue
+                # Voto válido
+                votos[jug_vivos[eleccion_voto]["nombre"]] += 1
+                break
+            except ValueError:
+                print("⚠️ - ERROR: Debes introducir un valor numérico.")
 
-                except ValueError:
-                    print("⚠️ - ERROR: Debes introducir un valor numérico.")
-    # Busco el jugador o jugadores más votados
+    # Buscar máximo de votos
     max_votos = max(votos.values())
     a_eliminar = []
-    for jugador in votos.keys():
-        if votos[jugador] == max_votos:
-            a_eliminar.append(jugador)
+    # ALmaceno los jugadores que tengan num_votos == max_votos
+    for nombre, num_votos in votos.items():
+        if num_votos == max_votos:
+            a_eliminar.append(nombre)
+
+    # Elegir jugador a eliminar
+    nombre_eliminado = random.choice(a_eliminar)
+    # Mensaje en caso de empate
     if len(a_eliminar) > 1:
-        print("Ha habido un empate en la votación, no se ha eliminado a nadie.")
-    else:
-        nombre_eliminado = a_eliminar[0]
-        for jugador in jugadores:
-            if jugador["nombre"] == nombre_eliminado:
-                jugador["vivo"] = False
-                num_civiles, num_impostores = contar_vivos_por_rol()
-                print("")
-                print(f"💀 - El jugador {nombre_eliminado} ha sido eliminado.")
-                if jugador["rol"] == "civil":
-                    print(f"{nombre_eliminado} era civil.")
-                    print(f"Quedan {num_impostores} impostores.")
-                else:
-                    print(f"{nombre_eliminado} era impostor.")
-                    print(f"Quedan {num_impostores} impostores.")
-                input("Presiona ENTER para continuar.")
-                break
+        print("🍀 - Ha habido un empate, se eliminará un jugador aleatoriamente.")
+
+    # Eliminar jugador
+    for jugador in jugadores:
+        if jugador["nombre"] == nombre_eliminado:
+            jugador["vivo"] = False
+            num_civiles, num_impostores = contar_vivos_por_rol()
+            print("")
+            print(f"💀 - El jugador {nombre_eliminado} ha sido eliminado.")
+            if jugador["rol"] == "civil":
+                print(f"{nombre_eliminado} era civil.")
+            else:
+                print(f"{nombre_eliminado} era impostor.")
+            print(f"Quedan {num_impostores} impostores.")
+            input("Presiona ENTER para continuar.")
+            break
 
 
 def contar_vivos_por_rol():
@@ -484,6 +478,8 @@ def comprobar_victoria(ronda, max_rondas, palabra):
             if jugador["rol"] == "impostor":
                 print(f"- {jugador['nombre']}")
         print(f"La palabra era: {diccionario_palabras[palabra][0]}")
+        print("")
+        input("Presiona ENTER para continuar y volver al menú principal.")
         return True
     # Caso 2: se acaban las rondas o quedan más impostores que civiles
     if ronda > max_rondas or impostores >= civiles:
@@ -496,6 +492,8 @@ def comprobar_victoria(ronda, max_rondas, palabra):
             if jugador["rol"] == "impostor":
                 print(f"- {jugador['nombre']}")
         print(f"La palabra era: {diccionario_palabras[palabra][0]}")
+        print("")
+        input("Presiona ENTER para continuar y volver al menú principal.")
         return True
     return False
 
@@ -510,12 +508,11 @@ def partida(num_impostores, max_rondas):
     limpiar_consola()
     # Caso en el que el usuario no haya registrado los jugadores usando selec_nombre_jugadores
     if len(jugadores) == 0:
-            print("⚠️ - ERROR: No hay jugadores registrados.")
-            print("Debes introducir los nombres antes de iniciar la partida.")
-            input("Pulsa ENTER para volver al menú.")
-            return
+        print("⚠️ - ERROR: No hay jugadores registrados.")
+        print("Debes introducir los nombres antes de iniciar la partida.")
+        input("Pulsa ENTER para volver al menú.")
+        return
     # Mostrar información de los jugadores y ajustes
-    partida = True
     ronda = 1
     respuestas = []
     print("Los jugadores serán: ")
