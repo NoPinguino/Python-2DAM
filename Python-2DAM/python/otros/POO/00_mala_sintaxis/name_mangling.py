@@ -5,5 +5,7 @@ class Persona:
 
 p = Persona("Misael")
 
-print(p.__nombre)  # ❌ Error: can't access directly
-print(p._Persona__nombre)  # ✅ "Misael"
+# print(p.__nombre)  # ERROR
+print(
+    p._Persona__nombre
+)  # ✅ "Misael" -> Python lo lee, pero es mala práctica. Usa getter!!!
