@@ -25,6 +25,8 @@ class Estudiante(Persona):
         super().__init__(nombre, edad)  # llamo al constructor padre
         self.curso = curso
 
+    # Casos de herencia múltiple se usa el nombre de la clase en vez de super()
+
     def presentarse(self):
         return f"""Hola, me llamo {self.nombre}, tengo {self.edad} años. \n
             y estudio {self.curso}."""
