@@ -222,6 +222,18 @@ def limpiar_consola():
         print("")
 
 
+# def elegir_facil():
+#     print("Se ha cambiado la dificultad a: FÁCIL")
+
+
+# def elegir_normal():
+#     print("Se ha cambiado la dificultad a: NORMAL")
+
+
+# def elegir_dificil():
+#     print("Se ha cambiado la dificultad a: DIFICIL")
+
+
 def selec_nombre_jugadores(num_jugadores):
     jugadores.clear()  # Elimino los jugadores registrados anteriormente
     nombres_usados = set()  # Más eficiente que las listas
@@ -451,8 +463,8 @@ def sumar_puntos_civiles():
         if jugador["rol"] == "civil":
             jugador["puntos"] += 1
             # Sumo un punto extra a los civiles que ganen quedando vivos
-            if jugador["vivo"]:
-                jugador["puntos"] += 1
+            # if jugador["vivo"]:
+            #     jugador["puntos"] += 1
 
 
 def sumar_puntos_impostores():
@@ -461,8 +473,14 @@ def sumar_puntos_impostores():
         if jugador["rol"] == "impostor":
             jugador["puntos"] += 1
             # Sumo dos puntosLo de extra a los impostores que ganen quedando vivos
-            if jugador["vivo"]:
-                jugador["puntos"] += 2
+            # if jugador["vivo"]:
+            #     jugador["puntos"] += 2
+
+
+def sumar_puntos_ronda():
+    for jugador in jugadores:
+        if jugador["rol"] == "impostor" and jugador["vivo"]:
+            jugador["puntos"] += 1
 
 
 def comprobar_victoria(ronda, max_rondas, palabra):
@@ -541,6 +559,8 @@ def partida(num_impostores, max_rondas):
         imprimir_respuestas(respuestas, ronda)
         input("Presiona ENTER para iniciar las votaciones.")
         votaciones()
+        # AQUÍ SE ENCUENTRA LA SUMA DE PUNTOS DE CADA RONDA:
+        sumar_puntos_ronda()
         if comprobar_victoria(ronda, max_rondas, clave_palabra):
             reiniciar_jugadores()
             break

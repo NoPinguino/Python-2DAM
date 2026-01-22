@@ -3,9 +3,9 @@ class Persona:
         self.__nombre = nombre
 
 
-p = Persona("Misael")
+objPersona = Persona("Misael")
 
 # print(p.__nombre)  # ERROR
 print(
-    p._Persona__nombre
+    objPersona._Persona__nombre
 )  # ✅ "Misael" -> Python lo lee, pero es mala práctica. Usa getter!!!
