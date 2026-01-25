@@ -43,10 +43,10 @@ class Persona:
 objPersona = Persona("Misael", "de la Morena", 19)
 
 # Uso de getter con decorador para nombre (no existe getter)
-try:
-    objPersona.nombre = "Álex"
-except AttributeError:
-    print("⚠️ ERROR: nombre no dispone de un método setter.")
+# try:
+#     objPersona.nombre = "Álex"
+# except AttributeError:
+#     print("⚠️ ERROR: nombre no dispone de un método setter.")
 
 # Uso de método
 print(objPersona.saludar())
